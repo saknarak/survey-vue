@@ -161,6 +161,7 @@ export default {
     font-size: 16px;
     line-height: 20px;
     margin: 16px 0;
+    white-space: pre-wrap;
   }
   .header, .text {
     font-size: 18px;
