@@ -115,7 +115,7 @@ function timeMatrixText(matrix) {
   }
 }
 
-module.exports = {
+export default {
   genNamespace,
   checkAcl,
   genTimeRangeText,
