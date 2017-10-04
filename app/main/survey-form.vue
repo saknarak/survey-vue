@@ -210,11 +210,12 @@ export default {
     background-color: rgba(255, 255, 255, 0.66);
     padding: 4px;
     text-align: center;
+    display: flex;
     button {
       font-size: 20px;
       height: 32px;
       border-radius: 4px;
-      min-width: 160px;
+      flex-grow: 1;
       &+button {
         margin-left: 16px;
       }
