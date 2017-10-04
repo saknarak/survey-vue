@@ -125,6 +125,7 @@ export default {
     height: 48px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     display: flex;
+    z-index: 1000;
     > .title {
       flex-grow: 1;
       font-size: 24px;
@@ -195,9 +196,26 @@ export default {
     .table {
       background-color: #eee;
       width: 100%;
+      border-collapse: collapse;
+      thead {
+        tr {
+          background-color: #eee;
+          th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 48px;
+          }
+          &:nth-child(2) {
+            th {
+              top: 72px;
+            }
+          }
+        }
+      }
       td, th {
         background-color: #fff;
         padding: 2px 4px;
+        border: 1px solid #eee;
         &.span {
           background-color: #eee;
         }
