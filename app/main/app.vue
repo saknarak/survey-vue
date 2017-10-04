@@ -10,8 +10,6 @@
 import store from '../vuex'
 import api from './api'
 
-import actions from './actions'
-
 export default {
   store,
 
