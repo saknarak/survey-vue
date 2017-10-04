@@ -113,7 +113,7 @@ export default {
 </script>
 <style lang="scss">
 .survey {
-  margin-top: 48px;
+  margin-top: 32px;
   margin-bottom: 32px;
   .action-bar {
     background-color: #E91E63;
@@ -139,7 +139,7 @@ export default {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.66);
-    // display: none;
+    display: none;
     opacity: 0;
     transition: 1s;
     &.active {
@@ -154,29 +154,47 @@ export default {
     font-weight: bold;
     text-align: center;
     line-height: 24px;
-    margin: 8px 0;
+    margin: 16px 0;
   }
   > .detail {
     font-size: 16px;
     line-height: 20px;
-    margin: 8px 0;
+    margin: 16px 0;
   }
   .header, .text {
     font-size: 18px;
+    font-weight: bold;
     line-height: 20px;
-    margin: 8px 0;
+    margin: 16px 0;
   }
   .text {
     font-size: 16px;
     line-height: 20px;
-    margin: 8px 0;
+    margin: 16px 0;
   }
   .form {
-    input[type=text], textarea {
+    input[type=text] {
       width: 100%;
+      height: 32px;
+      border: none;
+      border-radius: 4px;
+      border: 1px solid #eee;
+      border-bottom: 1px solid #ccc;
+      padding: 4px;
+    }
+    label.chk::before {
+      content: ''
+    }
+    textarea {
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #eee;
+      border-bottom: 1px solid #ccc;
+      padding: 4px;
     }
     .table {
       background-color: #eee;
+      width: 100%;
       td, th {
         background-color: #fff;
         padding: 2px 4px;
@@ -188,6 +206,10 @@ export default {
           text-align: center;
         }
       }
+      th {
+        line-height: 20px;
+        font-weight: normal;
+      }
       tr.sep td {
         border-bottom: 1px solid #ccc;
       }
@@ -197,9 +219,6 @@ export default {
       line-height: 24px;
       &.inline {
         display: flex;
-      }
-      label {
-        display: block;
       }
       .inline {
         display: flex;
@@ -219,11 +238,13 @@ export default {
     padding: 4px 8px;
     text-align: center;
     display: flex;
+    justify-content: center;
     button {
       font-size: 20px;
       height: 32px;
       border-radius: 4px;
       flex-grow: 1;
+      max-width: 200px;
       &.submit {
         color: #009688;
       }

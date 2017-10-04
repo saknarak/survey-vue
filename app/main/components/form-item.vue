@@ -4,10 +4,10 @@
   <div v-else-if="item.ch">
     <div v-html="item.t"></div>
     <template v-for="(ch, idx2) in item.ch">
-      <label :key="idx2">
-        <input type="radio" v-model="ans[item.f]" :value="ch.v" :disabled="disabled">
-        <span v-html="ch.t"></span>
-      </label>
+      <div :key="idx2">
+        <input type="radio" v-model="ans[item.f]" :id="item.f + '_' + ch.v" :value="ch.v" :disabled="disabled">
+        <label v-html="ch.t" :for="item.f + '_' + ch.v"></label>
+      </div>
       <div v-if="ch.sub" :key="idx2" :class="{disabled: ans[item.f] !== ch.v}">
         <form-item v-for="(s, sidx) in ch.sub" :key="sidx" :item="s" :ans="ans" :disabled="ans[item.f] !== ch.v"></form-item>
       </div>
@@ -16,10 +16,10 @@
   <div v-else-if="item.chk">
     <div v-html="item.t"></div>
     <template v-for="(ch, idx2) in item.chk">
-      <label :key="idx2">
-        <input type="checkbox" v-model="ans[item.f]" :value="ch.v" :disabled="disabled">
-        <span v-html="ch.t"></span>
-      </label>
+      <div :key="idx2">
+        <input type="checkbox" v-model="ans[item.f]" :id="item.f + '_' + ch.v" :value="ch.v" :disabled="disabled">
+        <label v-html="ch.t" :for="item.f + '_' + ch.v"></label>
+      </div>
       <div v-if="ch.sub" :key="idx2" :class="{disabled: ans[item.f] !== ch.v}">
         <form-item v-for="(s, sidx) in ch.sub" :key="sidx" :item="s" :ans="ans" :disabled="ans[item.f].indexOf(ch.v) === -1"></form-item>
       </div>
@@ -27,7 +27,7 @@
   </div>
   <div v-else-if="item.textarea">
     <div v-html="item.t"></div>
-    <textarea v-model="ans[item.f]" :disabled="disabled"></textarea>
+    <textarea v-model="ans[item.f]" :disabled="disabled" rows="3"></textarea>
   </div>
   <div v-else-if="item.table">
     <div v-html="item.t"></div>
@@ -59,7 +59,7 @@
         </tr> -->
         <template v-for="(row, r) in item.list">
           <tr :key="r" v-if="row.h">
-            <td :colspan="item.level.length + 1" v-html="row.h" :class="{span: span}"></td>
+            <td :colspan="item.level.length + 1" v-html="row.h" :class="{span: row.span}"></td>
           </tr>
           <template v-else>
             <tr :key="r">
@@ -77,7 +77,7 @@
     </table>
   </div>
   <div v-else-if="item.f" :class="{inline:item.inline}">
-    <div v-html="item.t"></div>
+    <div v-html="item.t" style="flex-shrink:0"></div>
     <input type="text" v-model="ans[item.f]" :disabled="disabled">
   </div>
 </template>
