@@ -139,9 +139,13 @@ export default {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.66);
-    display: none;
+    // display: none;
+    opacity: 0;
+    transition: 1s;
     &.active {
-      display: block;
+      // display: block;
+      backdrop-filter: blur(4px);
+      opacity: 1;
     }
   }
   padding: 16px 8px;
@@ -175,6 +179,7 @@ export default {
       background-color: #eee;
       td, th {
         background-color: #fff;
+        padding: 2px 4px;
         &.span {
           background-color: #eee;
         }
@@ -182,6 +187,9 @@ export default {
           width: 40px;
           text-align: center;
         }
+      }
+      tr.sep td {
+        border-bottom: 1px solid #ccc;
       }
     }
     > .item {
@@ -207,8 +215,8 @@ export default {
     left: 0;
     right: 0;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.66);
-    padding: 4px;
+    background-color: rgba(255, 255, 255, 0.83);
+    padding: 4px 8px;
     text-align: center;
     display: flex;
     button {
@@ -216,6 +224,12 @@ export default {
       height: 32px;
       border-radius: 4px;
       flex-grow: 1;
+      &.submit {
+        color: #009688;
+      }
+      &.reset {
+        color: #FF9800;
+      }
       &+button {
         margin-left: 16px;
       }

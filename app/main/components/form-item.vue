@@ -42,7 +42,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(row, r) in item.list" :key="r">
+        <!-- <tr v-for="(row, r) in item.list" :key="r">
           <template v-if="row.h && row.span">
             <td :colspan="item.level.length + 1" v-html="row.h" class="span"></td>
           </template>
@@ -56,7 +56,23 @@
               <label><input type="radio" v-model="ans[row.f]" :value="lvl.v"></label>
             </td>
           </template>
-        </tr>
+        </tr> -->
+        <template v-for="(row, r) in item.list">
+          <tr :key="r" v-if="row.h">
+            <td :colspan="item.level.length + 1" v-html="row.h" :class="{span: span}"></td>
+          </tr>
+          <template v-else>
+            <tr :key="r">
+              <td :colspan="item.level.length + 1" v-html="row.t"></td>
+            </tr>
+            <tr :key="r" class="sep">
+              <td>&nbsp;</td>
+              <td v-for="lvl in item.level" :key="lvl.v" class="col">
+                <label><input type="radio" v-model="ans[row.f]" :value="lvl.v"></label>
+              </td>
+            </tr>
+          </template>
+        </template>
       </tbody>
     </table>
   </div>
